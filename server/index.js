@@ -19,6 +19,18 @@ module.exports = function(app) {
   const morgan = require('morgan');
   app.use(morgan('dev'));
 
+  app.get('/foos/1', function(req, res) {
+    res.json({
+      data: {
+        type: 'foo',
+        id: 1,
+        attributes: {
+          bar: Math.floor(Math.random() * 100) + 1
+        }
+      }
+    });
+  })
+
   mocks.forEach(route => route(app));
   proxies.forEach(route => route(app));
 };
