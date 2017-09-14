@@ -19,15 +19,16 @@ module.exports = function(app) {
   const morgan = require('morgan');
   app.use(morgan('dev'));
 
-  app.get('/foos/1', function(req, res) {
+  app.get('/foos', function(req, res) {
     res.json({
-      data: {
+      data: [{
         type: 'foo',
         id: 1,
         attributes: {
-          bar: Math.floor(Math.random() * 100) + 1
+          bar: Math.floor(Math.random() * 100) + 1,
+          baz: "/blah/blah"
         }
-      }
+      }]
     });
   })
 
