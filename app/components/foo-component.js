@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  computedModel: Ember.computed('model', function() {
+  computedModel: Ember.computed('model.@each.bar', function() {
     return this.get('model').map(function(m) {
       return `Computed: ${m.data.bar}`;
     });
